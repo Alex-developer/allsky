@@ -64,6 +64,9 @@ if [[ $TIMELAPSE == "true" ]]; then
 	echo -e "\n"
 fi
 
+# Run custom script at the end of a night. This is run BEFORE the automatic deletion just in case you need to do something with the files before they are removed
+./endOfNight_additionalSteps.sh
+
 # Automatically delete old images and videos
 if [[ $AUTO_DELETE == "true" ]]; then
 	del=$(date --date="$NIGHTS_TO_KEEP days ago" +%Y%m%d)
